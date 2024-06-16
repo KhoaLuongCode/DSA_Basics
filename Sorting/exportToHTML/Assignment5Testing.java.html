@@ -1,0 +1,259 @@
+<html>
+<head>
+<title>Assignment5Testing.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Assignment5Testing.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">org.junit.Test</span><span class="s0">;</span>
+<span class="s0">import static </span><span class="s1">org.junit.Assert.*</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Assignment5Testing {</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testSort(){</span>
+
+        <span class="s2">// Create some sample art objects</span>
+        <span class="s1">Art art1 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">100</span><span class="s0">, </span><span class="s3">800</span><span class="s0">, </span><span class="s3">600</span><span class="s0">, </span><span class="s4">&quot;Ipad&quot;</span><span class="s0">, </span><span class="s4">&quot;Khoa&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art2 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">25</span><span class="s0">, </span><span class="s3">920</span><span class="s0">, </span><span class="s3">730</span><span class="s0">, </span><span class="s4">&quot;Door&quot;</span><span class="s0">, </span><span class="s4">&quot;Harold&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art3 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">12</span><span class="s0">, </span><span class="s3">240</span><span class="s0">, </span><span class="s3">210</span><span class="s0">, </span><span class="s4">&quot;World&quot;</span><span class="s0">, </span><span class="s4">&quot;CBum&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art4 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">70</span><span class="s0">, </span><span class="s3">790</span><span class="s0">, </span><span class="s3">580</span><span class="s0">, </span><span class="s4">&quot;Chair&quot;</span><span class="s0">, </span><span class="s4">&quot;Lindan&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s2">// NAME: Chair -&gt; Door -&gt; Ipad -&gt; World</span>
+        <span class="s2">// ARTIST NAME: CBum -&gt; Harold -&gt; Khoa -&gt; Lindan</span>
+
+        <span class="s2">// Create an ArtMuseum object and add the art objects to it</span>
+        <span class="s1">ArtMuseum museum = </span><span class="s0">new </span><span class="s1">ArtMuseum(</span><span class="s4">&quot;Gallery&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art1)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art2)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art3)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art4)</span><span class="s0">;</span>
+
+        <span class="s2">// Test sorting by height in ascending order</span>
+        <span class="s1">List&lt;Art&gt; sortedList = museum.sort(</span><span class="s4">&quot;height&quot;</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art3</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">0</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art2</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">1</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art4</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">2</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art1</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// Test sorting by height in descending order</span>
+        <span class="s1">sortedList = museum.sort(</span><span class="s4">&quot;height&quot;</span><span class="s0">, </span><span class="s1">-</span><span class="s3">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art1</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">0</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art4</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">1</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art2</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">2</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art3</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// Test sorting by price in ascending order</span>
+        <span class="s1">sortedList = museum.sort(</span><span class="s4">&quot;price&quot;</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art3</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">0</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art4</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">1</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art1</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">2</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art2</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// Test sorting by name in ascending order</span>
+        <span class="s1">sortedList = museum.sort(</span><span class="s4">&quot;name&quot;</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art4</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">0</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art2</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">1</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art1</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">2</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art3</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// Test sorting by artistName in ascending order</span>
+        <span class="s1">sortedList = museum.sort(</span><span class="s4">&quot;artistName&quot;</span><span class="s0">, </span><span class="s3">1</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art3</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">0</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art2</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">1</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art1</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">2</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art4</span><span class="s0">, </span><span class="s1">sortedList.get(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testRandomizedArt(){</span>
+        <span class="s1">ArtMuseum museum = </span><span class="s0">new </span><span class="s1">ArtMuseum(</span><span class="s4">&quot;Galley&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art1 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">100</span><span class="s0">, </span><span class="s3">800</span><span class="s0">, </span><span class="s3">600</span><span class="s0">, </span><span class="s4">&quot;Ipad&quot;</span><span class="s0">, </span><span class="s4">&quot;Khoa&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art2 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">25</span><span class="s0">, </span><span class="s3">920</span><span class="s0">, </span><span class="s3">730</span><span class="s0">, </span><span class="s4">&quot;Door&quot;</span><span class="s0">, </span><span class="s4">&quot;Harold&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art3 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">12</span><span class="s0">, </span><span class="s3">240</span><span class="s0">, </span><span class="s3">210</span><span class="s0">, </span><span class="s4">&quot;World&quot;</span><span class="s0">, </span><span class="s4">&quot;CBum&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art4 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">70</span><span class="s0">, </span><span class="s3">790</span><span class="s0">, </span><span class="s3">580</span><span class="s0">, </span><span class="s4">&quot;Chair&quot;</span><span class="s0">, </span><span class="s4">&quot;Artist&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art5 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">212</span><span class="s0">, </span><span class="s3">240</span><span class="s0">, </span><span class="s3">2</span><span class="s0">, </span><span class="s4">&quot;Hello&quot;</span><span class="s0">, </span><span class="s4">&quot;Ronnie&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art6 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">730</span><span class="s0">, </span><span class="s3">790</span><span class="s0">, </span><span class="s3">3</span><span class="s0">, </span><span class="s4">&quot;Bag&quot;</span><span class="s0">, </span><span class="s4">&quot;Coleman&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">museum.add(art1)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art2)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art3)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art4)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art5)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art6)</span><span class="s0">;</span>
+
+        <span class="s1">List&lt;Art&gt; randomizedArts = museum.randomizeArts(</span><span class="s3">3</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s0">for </span><span class="s1">(Art randomizedArt : randomizedArts) {</span>
+            <span class="s1">System.out.println(randomizedArt.getArtistName())</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">System.out.println(</span><span class="s4">&quot;3 random arts have been generated as demonstrated by three random artist name&quot;</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testFindArt(){</span>
+        <span class="s1">Art art1 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">100</span><span class="s0">, </span><span class="s3">800</span><span class="s0">, </span><span class="s3">600</span><span class="s0">, </span><span class="s4">&quot;Ipad&quot;</span><span class="s0">, </span><span class="s4">&quot;Khoa&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art2 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">25</span><span class="s0">, </span><span class="s3">920</span><span class="s0">, </span><span class="s3">730</span><span class="s0">, </span><span class="s4">&quot;Door&quot;</span><span class="s0">, </span><span class="s4">&quot;Harold&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art3 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">12</span><span class="s0">, </span><span class="s3">240</span><span class="s0">, </span><span class="s3">210</span><span class="s0">, </span><span class="s4">&quot;World&quot;</span><span class="s0">, </span><span class="s4">&quot;CBum&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art4 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">70</span><span class="s0">, </span><span class="s3">790</span><span class="s0">, </span><span class="s3">580</span><span class="s0">, </span><span class="s4">&quot;Chair&quot;</span><span class="s0">, </span><span class="s4">&quot;Khoa&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">ArtMuseum museum = </span><span class="s0">new </span><span class="s1">ArtMuseum(</span><span class="s4">&quot;Gallery&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art1)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art2)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art3)</span><span class="s0">;</span>
+        <span class="s1">museum.add(art4)</span><span class="s0">;</span>
+
+        <span class="s1">List&lt;Art&gt; KhoaTheArtist = museum.findArts(</span><span class="s4">&quot;Khoa&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">assertEquals(</span><span class="s3">2</span><span class="s0">, </span><span class="s1">KhoaTheArtist.size())</span><span class="s0">;</span>
+        <span class="s1">assertEquals(</span><span class="s4">&quot;Khoa&quot;</span><span class="s0">, </span><span class="s1">KhoaTheArtist.get(</span><span class="s3">0</span><span class="s1">).getArtistName())</span><span class="s0">;</span>
+        <span class="s1">assertEquals(</span><span class="s4">&quot;Khoa&quot;</span><span class="s0">, </span><span class="s1">KhoaTheArtist.get(</span><span class="s3">1</span><span class="s1">).getArtistName())</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testRandomSortDivisbleBy5() {</span>
+            <span class="s1">ArtMuseum museum = </span><span class="s0">new </span><span class="s1">ArtMuseum(</span><span class="s4">&quot;Test Museum&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">List&lt;Art&gt; arts = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+
+            <span class="s1">Art art1 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">10</span><span class="s0">, </span><span class="s3">20</span><span class="s0">, </span><span class="s3">30</span><span class="s0">, </span><span class="s4">&quot;A&quot;</span><span class="s0">, </span><span class="s4">&quot;B&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art2 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">2</span><span class="s0">, </span><span class="s3">25</span><span class="s0">, </span><span class="s3">35</span><span class="s0">, </span><span class="s4">&quot;B&quot;</span><span class="s0">, </span><span class="s4">&quot;C&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art3 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">10</span><span class="s0">, </span><span class="s3">30</span><span class="s0">, </span><span class="s3">40</span><span class="s0">, </span><span class="s4">&quot;D&quot;</span><span class="s0">, </span><span class="s4">&quot;F&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art4 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">20</span><span class="s0">, </span><span class="s3">20</span><span class="s0">, </span><span class="s3">30</span><span class="s0">, </span><span class="s4">&quot;A&quot;</span><span class="s0">, </span><span class="s4">&quot;B&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art5 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">30</span><span class="s0">, </span><span class="s3">40</span><span class="s0">, </span><span class="s3">50</span><span class="s0">, </span><span class="s4">&quot;I&quot;</span><span class="s0">, </span><span class="s4">&quot;j&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art6 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">35</span><span class="s0">, </span><span class="s3">45</span><span class="s0">, </span><span class="s3">55</span><span class="s0">, </span><span class="s4">&quot;L&quot;</span><span class="s0">, </span><span class="s4">&quot;M&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art7 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">40</span><span class="s0">, </span><span class="s3">50</span><span class="s0">, </span><span class="s3">60</span><span class="s0">, </span><span class="s4">&quot;M&quot;</span><span class="s0">, </span><span class="s4">&quot;D&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art8 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">45</span><span class="s0">, </span><span class="s3">55</span><span class="s0">, </span><span class="s3">65</span><span class="s0">, </span><span class="s4">&quot;C&quot;</span><span class="s0">, </span><span class="s4">&quot;N&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art9 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">50</span><span class="s0">, </span><span class="s3">60</span><span class="s0">, </span><span class="s3">70</span><span class="s0">, </span><span class="s4">&quot;S&quot;</span><span class="s0">, </span><span class="s4">&quot;D&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">Art art10 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">55</span><span class="s0">, </span><span class="s3">65</span><span class="s0">, </span><span class="s3">75</span><span class="s0">, </span><span class="s4">&quot;A&quot;</span><span class="s0">, </span><span class="s4">&quot;V&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s2">// Add some Art objects to the museum</span>
+            <span class="s1">arts.add(art1)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art2)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art3)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art4)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art5)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art6)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art7)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art8)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art9)</span><span class="s0">;</span>
+            <span class="s1">arts.add(art10)</span><span class="s0">;</span>
+
+            <span class="s2">// Add the Arts to the museum</span>
+            <span class="s0">for </span><span class="s1">(Art art : arts) {</span>
+                <span class="s1">museum.add(art)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s2">// Randomly sort the Arts</span>
+            <span class="s1">List&lt;Art&gt; sortedArts = museum.randomSort(arts)</span><span class="s0">;</span>
+
+            <span class="s2">// Check that the size of the sorted list is the same as the original list</span>
+            <span class="s1">assertEquals(arts.size()</span><span class="s0">, </span><span class="s1">sortedArts.size())</span><span class="s0">;</span>
+
+            <span class="s2">// Check that each Art object is still in the list</span>
+            <span class="s0">for </span><span class="s1">(Art art : arts) {</span>
+                <span class="s1">assertTrue(sortedArts.contains(art))</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s2">// FIRST TWO SORTED ACCORDING TO HEIGHT</span>
+            <span class="s1">assertEquals(art2</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">0</span><span class="s1">))</span><span class="s0">;</span>
+            <span class="s1">assertEquals(art1</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">1</span><span class="s1">))</span><span class="s0">;</span>
+
+            <span class="s2">// SECOND TWO SORTED ACCORDING TO PRICE</span>
+            <span class="s1">assertEquals(art4</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">2</span><span class="s1">))</span><span class="s0">;</span>
+            <span class="s1">assertEquals(art3</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+
+            <span class="s2">// THIRD TWO SORTED ACCORDING TO WIDTH</span>
+            <span class="s1">assertEquals(art5</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">4</span><span class="s1">))</span><span class="s0">;</span>
+            <span class="s1">assertEquals(art6</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">5</span><span class="s1">))</span><span class="s0">;</span>
+
+            <span class="s2">// FOUR TWO SORTED ACCORDING TO NAME: C &lt; M =&gt; art8 &gt; art7</span>
+            <span class="s1">assertEquals(art8</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">6</span><span class="s1">))</span><span class="s0">;</span>
+            <span class="s1">assertEquals(art7</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">7</span><span class="s1">))</span><span class="s0">;</span>
+
+            <span class="s2">// LAST SORTED ACCORDING TO ARTIST NAME: D &lt; V =&gt; art 9 first</span>
+            <span class="s1">assertEquals(art9</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">8</span><span class="s1">))</span><span class="s0">;</span>
+            <span class="s1">assertEquals(art10</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">9</span><span class="s1">))</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testRandomSortNotDivisbleBy5(){</span>
+        <span class="s1">ArtMuseum museum = </span><span class="s0">new </span><span class="s1">ArtMuseum(</span><span class="s4">&quot;Test Museum&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">List&lt;Art&gt; arts = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+
+        <span class="s1">Art art1 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">10</span><span class="s0">, </span><span class="s3">20</span><span class="s0">, </span><span class="s3">30</span><span class="s0">, </span><span class="s4">&quot;A&quot;</span><span class="s0">, </span><span class="s4">&quot;B&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art2 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">2</span><span class="s0">, </span><span class="s3">25</span><span class="s0">, </span><span class="s3">35</span><span class="s0">, </span><span class="s4">&quot;B&quot;</span><span class="s0">, </span><span class="s4">&quot;C&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art3 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">10</span><span class="s0">, </span><span class="s3">30</span><span class="s0">, </span><span class="s3">40</span><span class="s0">, </span><span class="s4">&quot;D&quot;</span><span class="s0">, </span><span class="s4">&quot;F&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art4 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">20</span><span class="s0">, </span><span class="s3">20</span><span class="s0">, </span><span class="s3">30</span><span class="s0">, </span><span class="s4">&quot;A&quot;</span><span class="s0">, </span><span class="s4">&quot;B&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art5 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">30</span><span class="s0">, </span><span class="s3">40</span><span class="s0">, </span><span class="s3">50</span><span class="s0">, </span><span class="s4">&quot;I&quot;</span><span class="s0">, </span><span class="s4">&quot;j&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art6 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">35</span><span class="s0">, </span><span class="s3">45</span><span class="s0">, </span><span class="s3">55</span><span class="s0">, </span><span class="s4">&quot;L&quot;</span><span class="s0">, </span><span class="s4">&quot;M&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art7 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">40</span><span class="s0">, </span><span class="s3">50</span><span class="s0">, </span><span class="s3">60</span><span class="s0">, </span><span class="s4">&quot;M&quot;</span><span class="s0">, </span><span class="s4">&quot;D&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art8 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">45</span><span class="s0">, </span><span class="s3">55</span><span class="s0">, </span><span class="s3">65</span><span class="s0">, </span><span class="s4">&quot;C&quot;</span><span class="s0">, </span><span class="s4">&quot;N&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art9 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">50</span><span class="s0">, </span><span class="s3">60</span><span class="s0">, </span><span class="s3">70</span><span class="s0">, </span><span class="s4">&quot;S&quot;</span><span class="s0">, </span><span class="s4">&quot;D&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art10 = </span><span class="s0">new </span><span class="s1">Art( </span><span class="s3">55</span><span class="s0">, </span><span class="s3">65</span><span class="s0">, </span><span class="s3">75</span><span class="s0">, </span><span class="s4">&quot;A&quot;</span><span class="s0">, </span><span class="s4">&quot;V&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art11 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">12</span><span class="s0">, </span><span class="s3">20</span><span class="s0">, </span><span class="s3">35</span><span class="s0">, </span><span class="s4">&quot;Test&quot;</span><span class="s0">, </span><span class="s4">&quot;Rietnam&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Art art12 = </span><span class="s0">new </span><span class="s1">Art(</span><span class="s3">30</span><span class="s0">,</span><span class="s3">28</span><span class="s0">, </span><span class="s3">83</span><span class="s0">, </span><span class="s4">&quot;Test2&quot;</span><span class="s0">, </span><span class="s4">&quot;WorldMap&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">arts.add(art1)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art2)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art3)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art4)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art5)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art6)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art7)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art8)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art9)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art10)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art11)</span><span class="s0">;</span>
+        <span class="s1">arts.add(art12)</span><span class="s0">;</span>
+
+        <span class="s1">List&lt;Art&gt; sortedArts = museum.randomSort(arts)</span><span class="s0">;</span>
+
+        <span class="s2">// FIRST TWO SORTED ACCORDING TO HEIGHT</span>
+        <span class="s1">assertEquals(art2</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">0</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art1</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">1</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// SECOND TWO SORTED ACCORDING TO PRICE</span>
+        <span class="s1">assertEquals(art4</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">2</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art3</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">3</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// THIRD TWO SORTED ACCORDING TO WIDTH</span>
+        <span class="s1">assertEquals(art5</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">4</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art6</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">5</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// FOUR TWO SORTED ACCORDING TO NAME: C &lt; M =&gt; art8 &gt; art7</span>
+        <span class="s1">assertEquals(art8</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">6</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art7</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">7</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">// LAST FOUR SORTED ACCORDING TO ARTIST NAME: D &lt; V =&gt; art 9 first</span>
+        <span class="s1">assertEquals(art9</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">8</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art11</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">9</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art10</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">10</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">assertEquals(art12</span><span class="s0">, </span><span class="s1">sortedArts.get(</span><span class="s3">11</span><span class="s1">))</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+
+
+
+
+
+<span class="s1">}</span>
+
+
+
+
+
+
+</pre>
+</body>
+</html>
